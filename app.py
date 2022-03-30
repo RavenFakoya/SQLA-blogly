@@ -16,12 +16,17 @@ app.config['SECRET_KEY'] = "SECRET123!"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
+@app.route('/')
+def home_root():
+    """Homepage redirects to users page"""
 
-@app.route("/")
+    return redirect("/users")
+
+@app.route("/users")
 def show_users():
     """Show all users."""
 
-    users = User.query.all()
+    users = User.query.order_by(User.first_name, User.last_name).all()
     return render_template("users.html", users=users)
 
 @app.route("/users/new")
