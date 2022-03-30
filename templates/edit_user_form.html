@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<h2>Edit User: {{user.get_full_name()}}</h2>
+<form method="POST">
+    <p>
+        First Name 
+        <input type="text" name="first_name" placeholder="Enter a first name">
+    </p>
+    <p>
+        Last name 
+        <input type="text" name="last_name" placeholder="Enter a last name">
+    </p>
+    <p>
+        Image URL 
+        <input type="URL" name="image_url" placeholder="Provide an image for this user">
+    </p>
+    <a href="/" class="btn btn-outline-secondary">Cancel</a>
+    <button class="btn btn-success">Save</button>
+
+</form>
+{% endblock%}
