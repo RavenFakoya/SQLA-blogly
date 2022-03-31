@@ -23,6 +23,13 @@
             <a href="/" class="btn btn-secondary btn-sm">Back to Users</a>
         </form>
       
+        <h2 class="mt-4">Posts</h2>
+        <ul>
+            {% for post in user.posts %}
+            <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+            {% endfor %}
+        </ul>
+        <a href="/users/{{user.id}}/posts/new" class="btn btn-primary btn-sm">Add Post</a>
     </div>
 </div>
 {% endblock%}

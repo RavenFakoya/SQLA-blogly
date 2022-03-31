@@ -1,10 +1,10 @@
-from models import User, db
+from models import User, Post, db
 from app import app
 
-with app.app_context():
-    db.drop_all()
-    db.create_all()
-    User.query.delete()
+# with app.app_context():
+db.drop_all()
+db.create_all()
+    # User.query.delete()
 
 # Add users
 Regina = User(first_name='Regina', 
@@ -33,16 +33,15 @@ Aaron = User(first_name='Aron',
 
 John = User(first_name='John', last_name='Doe')
 
+
+post1 = Post(title='First Post' , content="So you agree, you think you're really pretty", created_at='2005-09-12 12:15:45.123456', user_id=1)
+
 # Add new objects to session, so they'll persist
-with app.app_context():
-    db.session.add(Regina)
-    db.session.add(Cady)
-    db.session.add(Gretchen)
-    db.session.add(Karen)
-    db.session.add(Janis)
-    db.session.add(Aaron)
-    db.session.add(John)
+# with app.app_context():
+db.session.add_all([Regina, Cady, Gretchen, Karen, Janis, Aaron, John])
+db.session.commit()
 
-
+db.session.add(post1)
+db.session.commit()
 # Commit--otherwise, this never gets saved!
-    db.session.commit()
+ 
