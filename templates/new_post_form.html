@@ -22,6 +22,21 @@
                 <textarea class="form-control" name="content"></textarea>
             </div>   
         </div>
+        
+        <div class="form-check">
+            {% for tag in tags %}
+            <div>
+                <input type="checkbox" 
+                       class="form-check-input" 
+                       value="{{tag.id}}"
+                       name="tags" 
+                       id="tag_{{tag.name}}">
+                <label for="tag_{{tag.name}}" class="form-check-label">
+                    {{tag.name}}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
           
         <div class="form-group row">
             <div>
